@@ -11,9 +11,8 @@ namespace My2DGame.Core
         public static int ScreenWidth { get; set; } = 1600;
         public static int ScreenHeight { get; set; } = 900;
         public static bool Exit { get; set; } = false;
-
-        public static Scenes CurrentState { get; set; } = Scenes.Menu;
-        public enum Scenes
+        public static States CurrentState { get; set; } = States.Menu;
+        public enum States
         {
             Menu, Game, GameOver, GameWon, End
         }
