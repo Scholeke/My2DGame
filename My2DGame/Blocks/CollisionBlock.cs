@@ -19,11 +19,11 @@ namespace My2DGame.Blocks
         {
         }
 
-        public void Collide(Hero hero, Level level)
+        public void Collide(Hero hero)
         {
             if (hero.Rectangle.TouchTopOf(Rectangle))
             {
-                hero.SetYPosition(Rectangle.Y - hero.Rectangle.Height + 4);
+                hero.SetYPosition(Rectangle.Y - hero.Rectangle.Height + 6);
                 hero.SetYVelocity(0f);
                 hero.HasJumped = false;
             }
@@ -33,7 +33,7 @@ namespace My2DGame.Blocks
             }
             if (hero.Rectangle.TouchRightOf(Rectangle))
             {
-                hero.SetXPosition(Rectangle.X + hero.Rectangle.Width + 4);
+                hero.SetXPosition(Rectangle.X + Rectangle.Width);
             }
             if (hero.Rectangle.TouchBottomOf(Rectangle))
             {
