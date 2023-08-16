@@ -24,7 +24,7 @@ namespace My2DGame.Displayers
         public override void Update(GameTime gameTime)
         {
             _timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            EndGameOnAmount(0, Data.Scenes.GameOver);
+            EndGameOnAmount(0, Data.States.GameOver);
         }
         private void FillRectangles()
         {
