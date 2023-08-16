@@ -31,12 +31,11 @@ namespace My2DGame.Enemies
             Animation = MovingRight;
         }
 
-        public override void Collide(Hero hero, Level level)
+        public override void Collide(Hero hero)
         {
             if (hero.Rectangle.TouchTopOf(Rectangle))
             {
                 hero.SetYVelocity(-3f);
-                level.RemovedObjects.Add(this);
             }
             if (hero.Rectangle.TouchLeftOf(Rectangle))
             {
