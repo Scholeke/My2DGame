@@ -11,6 +11,6 @@ namespace My2DGame.Core.Interfaces
     internal interface ICollidable
     {
         public Rectangle Rectangle { get; set; }
-        public void Collide(Hero hero, Level level);
+        public void Collide(Hero hero);
     }
 }
