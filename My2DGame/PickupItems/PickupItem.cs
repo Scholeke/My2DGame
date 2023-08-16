@@ -32,7 +32,7 @@ namespace My2DGame.PickupItems
             spriteBatch.Draw(Texture, Rectangle, Color.White);
         }
 
-        public abstract void Collide(Hero hero, Level level);
+        public abstract void Collide(Hero hero);
 
     }
 }

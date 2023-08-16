@@ -18,13 +18,9 @@ namespace My2DGame.PickupItems
         {
             Texture = content.Load<Texture2D>("coin");
         }
-        public override void Collide(Hero hero, Level level)
+        public override void Collide(Hero hero)
         {
-            if (hero.Rectangle.Intersects(Rectangle))
-            {
                 hero.DisplayManager.CoinDisplayer.AddCoin();
-                level.RemovedObjects.Add(this);
-            }
         }
     }
 }
