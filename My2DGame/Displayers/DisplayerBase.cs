@@ -37,10 +37,11 @@ namespace My2DGame.Displayers
 
         public abstract void Update(GameTime gameTime);
 
-        protected void EndGameOnAmount(int amount, Data.Scenes scene)
+        protected void EndGameOnAmount(int amount, Data.States scene)
         {
             if (Rectangles.Count == amount)
                 Data.CurrentState = scene;
         }
+
     }
 }
