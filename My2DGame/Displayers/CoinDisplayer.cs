@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using My2DGame.Core;
+using My2DGame.Levels;
+using My2DGame.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,15 @@ namespace My2DGame.Displayers
 
         public override void Update(GameTime gameTime)
         {
-            EndGameOnAmount(3, Data.Scenes.GameWon);
+            if(LevelManager.GetInstance().CurrentLevel is Level2)
+            {
+                EndGameOnAmount(3, Data.States.End);
+            }
+            else
+            {
+                EndGameOnAmount(3, Data.States.GameWon);
+            }
+            
         }
 
         public void AddCoin()
