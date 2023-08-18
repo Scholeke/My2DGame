@@ -16,12 +16,10 @@ namespace My2DGame.Managers
 {
     internal class CollisionManager
     {
-        private List<ICollidable> _collidableObjects;
         public List<ICollidable> Removables { get; set; }
 
         public CollisionManager()
         {
-            _collidableObjects = new List<ICollidable>();
             Removables = new List<ICollidable>();
         }
         public void CheckCollisions(Hero hero, ICollidable b)

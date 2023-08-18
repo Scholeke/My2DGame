@@ -12,21 +12,20 @@ namespace My2DGame.Blocks
 {
     internal abstract class Block : IDrawable
     {
-        public bool Collision { get; set; }
         public Rectangle Rectangle { get; set; }
         private Color _color;
         private Texture2D _texture;
-        public Rectangle Tile { get; set; }
-        public Block(Rectangle rectangle, Color color, Texture2D texture)
+        private Rectangle _tile { get; set; }
+        public Block(Rectangle rectangle, Color color, Texture2D texture, Rectangle tile)
         {
             Rectangle = rectangle;
             _color = color;
             _texture = texture;
-            Collision = true;
+            _tile = tile;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, Rectangle, Tile, _color);
+            spriteBatch.Draw(_texture, Rectangle, _tile, _color);
         }
     }
 }

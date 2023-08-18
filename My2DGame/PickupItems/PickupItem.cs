@@ -21,10 +21,11 @@ namespace My2DGame.PickupItems
 
         public Vector2 Position { get => position; set => position = value; }
 
-        public PickupItem(Vector2 position, int size)
+        public PickupItem(Vector2 position, int size, Texture2D texture)
         {
             Position = position;
             Rectangle = new Rectangle((int)this.position.X, (int)this.position.Y, size, size);
+            Texture = texture;
         }
 
         public void Draw(SpriteBatch spriteBatch)

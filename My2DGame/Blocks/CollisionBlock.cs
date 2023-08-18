@@ -15,7 +15,7 @@ namespace My2DGame.Blocks
 {
     internal abstract class CollisionBlock : Block, ICollidable
     {
-        public CollisionBlock(Rectangle rectangle, Color color, Texture2D texture) : base(rectangle, color, texture)
+        public CollisionBlock(Rectangle rectangle, Color color, Texture2D texture, Rectangle tile) : base(rectangle, color, texture, tile)
         {
         }
 

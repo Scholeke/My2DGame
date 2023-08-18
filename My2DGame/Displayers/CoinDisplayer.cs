@@ -21,7 +21,7 @@ namespace My2DGame.Displayers
 
         public override void Update(GameTime gameTime)
         {
-            if(LevelManager.GetInstance().CurrentLevel is Level2)
+            if(LevelManager.Instance.CurrentLevel is Level2)
             {
                 EndGameOnAmount(3, Data.States.End);
             }

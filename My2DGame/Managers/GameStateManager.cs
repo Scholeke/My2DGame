@@ -9,7 +9,6 @@ using Microsoft.Xna.Framework.Graphics;
 using My2DGame.Core;
 using My2DGame.Scenes;
 using My2DGame.Core.Interfaces;
-using My2DGame.Levels;
 
 namespace My2DGame.Managers
 {

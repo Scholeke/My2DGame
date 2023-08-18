@@ -24,7 +24,7 @@ namespace My2DGame.Scenes
         public LevelManager Level { get; set; }
         public override void LoadContent(ContentManager content)
         {
-            Level = LevelManager.GetInstance();
+            Level = LevelManager.Instance;
             Level.Initialize();
 
         }

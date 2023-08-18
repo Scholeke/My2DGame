@@ -19,10 +19,17 @@ namespace My2DGame.Managers
     {
         public Hero Hero { get; set; }
         public Level CurrentLevel { get; set; }
+        public static LevelManager Instance { 
+            get
+            {
+                if (_instance == null)
+                    _instance = new LevelManager();
+                return _instance;
+            } }
         private Level1 level1;
         private Level2 level2;
         private ContentManager _content;
-        private static LevelManager _instance = null;
+        private static LevelManager _instance;
         public CollisionManager CollisionManager { get; set; }
 
         private LevelManager()
@@ -33,13 +40,6 @@ namespace My2DGame.Managers
             level1 = new Level1(_content);
             level2 = new Level2(_content);
             CurrentLevel = level1;
-        }
-
-        public static LevelManager GetInstance()
-        {
-            if (_instance == null)
-                _instance = new LevelManager();
-            return _instance;
         }
 
         public void Initialize()
@@ -72,7 +72,6 @@ namespace My2DGame.Managers
 
         public void StartTwo()
         {
-            Hero = null;
             Hero = new Hero(_content);
             CurrentLevel = level2;
             CurrentLevel.Initialize();

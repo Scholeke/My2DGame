@@ -10,9 +10,8 @@ namespace My2DGame.Blocks
 {
     internal class WaterBlock : NoCollisionBlock
     {
-        public WaterBlock(Rectangle rectangle, Color color, Texture2D texture) : base(rectangle, color, texture)
+        public WaterBlock(Rectangle rectangle, Color color, Texture2D texture) : base(rectangle, color, texture, new Rectangle(80, 80, 16, 16))
         {
-            Tile = new Rectangle(80, 80, 16, 16);
         }
     }
 }

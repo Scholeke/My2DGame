@@ -28,7 +28,7 @@ namespace My2DGame.Scenes
             base.Update(gameTime);
             if (MS.LeftButton == ButtonState.Pressed && MouseRectangle.Intersects(Buttons[2].Rectangle))
             {
-                LevelManager.GetInstance().StartTwo();
+                LevelManager.Instance.StartTwo();
                 Data.CurrentState = Data.States.Game;
             }
         }

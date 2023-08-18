@@ -46,7 +46,7 @@ namespace My2DGame.Scenes
 
             if (MS.LeftButton == ButtonState.Pressed && MouseRectangle.Intersects(Buttons[0].Rectangle))
             {
-                LevelManager.GetInstance().Restart();
+                LevelManager.Instance.Restart();
                 Data.CurrentState = Data.States.Game;
             }
             else if(MS.LeftButton == ButtonState.Pressed && MouseRectangle.Intersects(Buttons[1].Rectangle))

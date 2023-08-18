@@ -10,9 +10,8 @@ namespace My2DGame.Blocks
 {
     internal abstract class NoCollisionBlock : Block
     {
-        public NoCollisionBlock(Rectangle rectangle, Color color, Texture2D texture) : base(rectangle, color, texture)
+        public NoCollisionBlock(Rectangle rectangle, Color color, Texture2D texture, Rectangle tile) : base(rectangle, color, texture, tile)
         {
-            Collision = false;
         }
     }
 }
