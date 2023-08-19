@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using My2DGame.Core;
 using My2DGame.Levels;
+using My2DGame.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace My2DGame.Scenes
 {
-    internal class GameOverScene : MenuScene
+    internal class GameOverState : MenuState
     {
         public bool NextGame { get; set; } = false;
         private Texture2D mainText;
@@ -55,18 +56,11 @@ namespace My2DGame.Scenes
 
             if (MS.LeftButton == ButtonState.Pressed && MouseRectangle.Intersects(btnRectangles[0]))
             {
-                NextGame = true;
-                Data.CurrentState = Data.Scenes.Game;
+                LevelManager.Instance.Restart();
+                Data.CurrentState = Data.States.Game;
             }
             else if (MS.LeftButton == ButtonState.Pressed && MouseRectangle.Intersects(btnRectangles[1]))
                 Game1.Instance.Exit();
-        }
-
-        public GameScene NewGame(ContentManager content)
-        {
-            GameScene newGame = new GameScene(new Level1(content));
-            newGame.LoadContent(content);
-            return newGame;
         }
     }
     

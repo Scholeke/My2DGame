@@ -19,47 +19,27 @@ using IDrawable = My2DGame.Core.Interfaces.IDrawable;
 
 namespace My2DGame.Scenes
 {
-    internal class GameScene : Scene
+    internal class GameState : State
     {
-        private Hero _hero;
-        public Level CurrentLevel { get; set; }
-        public GameScene(Level level)
-        {
-            CurrentLevel = level;
-        }
+        public LevelManager Level { get; set; }
         public override void LoadContent(ContentManager content)
         {
-            _hero = new Hero(content);
-            CurrentLevel.Initialize();
+            Level = LevelManager.Instance;
+            Level.Initialize();
 
         }
 
         public override void Update(GameTime gameTime)
         {
-            Collide();
-            _hero.Update(gameTime);
-
-            CurrentLevel.Update(gameTime);
+            Level.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            CurrentLevel.Draw(spriteBatch);
-            _hero.Draw(spriteBatch);
+            Level.Draw(spriteBatch);
 
         }
 
-        private void Collide()
-        {
-            foreach (IDrawable obj in CurrentLevel.Drawables)
-            {
-                if (obj is ICollidable)
-                {
-                    ICollidable c = (ICollidable)obj;
-                    c.Collide(_hero, CurrentLevel);
-                }
-            }
-        }
 
     }
 }

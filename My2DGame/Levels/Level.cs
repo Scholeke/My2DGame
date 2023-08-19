@@ -29,10 +29,10 @@ namespace My2DGame.Levels
         public Texture2D Background { get; protected set; }
         public List<Enemy> Enemies { get; protected set; }
         public List<PickupItem> Items { get; protected set; }
-
+        public bool IsFinished { get; set; } = false;
         public List<ICollidable> Collidables { get; protected set; }
         public List<IGameObject> Objects { get; set; }
-        public List<IDrawable> RemovedObjects { get; set; }
+        public List<ICollidable> RemovedObjects { get; set; }
         public List<IDrawable> Drawables { get; set; }
 
         public Level(ContentManager content)
@@ -43,9 +43,10 @@ namespace My2DGame.Levels
             Enemies = new List<Enemy>();
             Items = new List<PickupItem>();
             Objects = new List<IGameObject>();
-            RemovedObjects = new List<IDrawable>();
+            RemovedObjects = new List<ICollidable>();
             Drawables = new List<IDrawable>();
             Background = content.Load<Texture2D>("forestandcave");
+            Collidables = new List<ICollidable>();
 
         }
         
@@ -56,6 +57,13 @@ namespace My2DGame.Levels
             Drawables.AddRange(Items);
             Drawables.AddRange(Blocks);
             Drawables.AddRange(Objects);
+            foreach(var a in Drawables)
+            {
+                if(a is ICollidable c)
+                {
+                    Collidables.Add(c);
+                }
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -72,11 +80,12 @@ namespace My2DGame.Levels
             {
                 o.Update(gameTime);
             }
-            foreach(IDrawable o in RemovedObjects)
+            foreach(ICollidable o in RemovedObjects)
             {
                 if (RemovedObjects.Contains(o))
                 {
-                    Drawables.Remove(o);
+                    Drawables.Remove((IDrawable)o);
+                    Collidables.Remove(o);
                 }
             }
             RemovedObjects.Clear();
@@ -110,14 +119,6 @@ namespace My2DGame.Levels
                             Color.White,
                             _tileset,
                             new Rectangle(16, 32, 16, 16))); ;
-                    }
-                    if (Gameboard[l, c] == 4)
-                    {
-                        Blocks.Add(new MovingBlock(
-                            new Rectangle(c * blockSize, l * blockSize, blockSize, blockSize),
-                            Color.White,
-                            _tileset,
-                            new Rectangle(64, 0, 16, 16))); ;
                     }
                 }
             }

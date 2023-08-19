@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace My2DGame.Scenes
 {
-    internal class EndScene : Scene
+    internal class EndState : State
     {
         private Texture2D mainText;
         private Button exitButton;

@@ -85,7 +85,7 @@ namespace My2DGame.Core
             if (position.Y < 0) velocity.Y = 1f;
             if (position.Y > Data.ScreenHeight - Rectangle.Height)
             {
-                Data.CurrentState = Data.Scenes.GameOver;
+                Data.CurrentState = Data.States.GameOver;
             }
         }
 

@@ -11,7 +11,7 @@ using IComponent = My2DGame.Core.Interfaces.IComponent;
 
 namespace My2DGame.Scenes
 {
-    internal abstract class Scene : IComponent
+    internal abstract class State : IComponent
 
     {
         public Texture2D Background { get; set; }

@@ -11,6 +11,5 @@ namespace My2DGame.Core.Interfaces
     internal interface IGameObject : IDrawable
     {
         public void Update(GameTime gameTime);
-
     }
 }

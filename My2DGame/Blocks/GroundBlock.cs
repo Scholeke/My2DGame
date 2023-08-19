@@ -10,9 +10,9 @@ namespace My2DGame.Blocks
 {
     internal class GroundBlock : CollisionBlock
     {
-        public GroundBlock(Rectangle rectangle, Color color, Texture2D texture, Rectangle tile) : base(rectangle, color, texture)
+        public GroundBlock(Rectangle rectangle, Color color, Texture2D texture, Rectangle tile) : base(rectangle, color, texture, tile)
         {
-            Tile = tile;
+
         }
     }
 }

@@ -10,14 +10,15 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.MediaFoundation;
 using ButtonState = Microsoft.Xna.Framework.Input.ButtonState;
+using My2DGame.Managers;
 
 namespace My2DGame.Scenes
 {
-    internal class MenuScene : Scene
+    internal class MenuState : State
     {
         protected int MAX_BTNS = 2;
         public Button[] Buttons { get; set; }
-        public MenuScene()
+        public MenuState()
         {
             Buttons = new Button[MAX_BTNS];
         }
@@ -44,7 +45,10 @@ namespace My2DGame.Scenes
             MouseRectangle = new Rectangle(MS.X, MS.Y, 1, 1);
 
             if (MS.LeftButton == ButtonState.Pressed && MouseRectangle.Intersects(Buttons[0].Rectangle))
-                Data.CurrentState = Data.Scenes.Game;
+            {
+                LevelManager.Instance.Restart();
+                Data.CurrentState = Data.States.Game;
+            }
             else if(MS.LeftButton == ButtonState.Pressed && MouseRectangle.Intersects(Buttons[1].Rectangle))
                 Game1.Instance.Exit();
         }

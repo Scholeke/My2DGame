@@ -52,7 +52,7 @@ namespace My2DGame.Enemies
 
         }
 
-        public abstract void Collide(Hero hero, Level level);
+        public abstract void Collide(Hero hero);
 
     }
 }

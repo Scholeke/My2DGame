@@ -14,17 +14,13 @@ namespace My2DGame.PickupItems
 {
     internal class Coin : PickupItem
     {
-        public Coin(ContentManager content, Vector2 position) : base(position, 40)
+        public Coin(ContentManager content, Vector2 position) : base(position, 40, content.Load<Texture2D>("coin"))
         {
-            Texture = content.Load<Texture2D>("coin");
+            
         }
-        public override void Collide(Hero hero, Level level)
+        public override void Collide(Hero hero)
         {
-            if (hero.Rectangle.Intersects(Rectangle))
-            {
                 hero.DisplayManager.CoinDisplayer.AddCoin();
-                level.RemovedObjects.Add(this);
-            }
         }
     }
 }

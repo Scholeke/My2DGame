@@ -14,17 +14,13 @@ namespace My2DGame.Buffs
 {
     internal class HealthBuff : PickupItem
     {
-        public HealthBuff(ContentManager content, Vector2 position) : base(position, 20)
+        public HealthBuff(ContentManager content, Vector2 position) : base(position, 20, content.Load<Texture2D>("Heart"))
         {
-            Texture = content.Load<Texture2D>("Heart");
+            
         }
-        public override void Collide(Hero hero, Level level)
+        public override void Collide(Hero hero)
         {
-            if (hero.Rectangle.Intersects(Rectangle))
-            {
                 hero.DisplayManager.HealthDisplayer.AddLife();
-                level.RemovedObjects.Add(this);
-            }
         }
 
     }
