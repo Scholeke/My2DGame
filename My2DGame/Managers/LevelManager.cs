@@ -1,17 +1,9 @@
-﻿using Accessibility;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using My2DGame.Core;
 using My2DGame.Core.Interfaces;
 using My2DGame.Levels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace My2DGame.Managers
 {
@@ -25,7 +17,8 @@ namespace My2DGame.Managers
                 if (_instance == null)
                     _instance = new LevelManager();
                 return _instance;
-            } }
+            } 
+        }
         private Level1 level1;
         private Level2 level2;
         private ContentManager _content;
