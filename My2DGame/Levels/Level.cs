@@ -19,9 +19,12 @@ using SpriteBatch = Microsoft.Xna.Framework.Graphics.SpriteBatch;
 
 namespace My2DGame.Levels
 {
+    public enum BlockType { TopGroundBlock, WaterBlock, BottomGroundBlock }
     internal abstract class Level : IGameObject
     {
         protected int blockSize = 45;
+
+        private BlockFactory _blockFactory;
         public List<Block> Blocks { get; set; }
         public int[,] Gameboard { get; protected set; }
         public Texture2D _tileset;
@@ -35,6 +38,7 @@ namespace My2DGame.Levels
         public List<ICollidable> RemovedObjects { get; set; }
         public List<IDrawable> Drawables { get; set; }
 
+
         public Level(ContentManager content)
         {
             _content = content;
@@ -47,6 +51,7 @@ namespace My2DGame.Levels
             Drawables = new List<IDrawable>();
             Background = content.Load<Texture2D>("forestandcave");
             Collidables = new List<ICollidable>();
+            _blockFactory = new BlockFactory();
 
         }
         
@@ -91,34 +96,20 @@ namespace My2DGame.Levels
             RemovedObjects.Clear();
 
         }
+
         public void CreateBlocks()
         {
             for (int l = 0; l < Gameboard.GetLength(0); l++)
             {
                 for (int c = 0; c < Gameboard.GetLength(1); c++)
                 {
-                    if (Gameboard[l, c] == 1)
+                    if (Gameboard[l, c] != 0)
                     {
-                        Blocks.Add(new GroundBlock(
-                            new Rectangle(c * blockSize, l * blockSize, blockSize, blockSize),
+                        BlockType blockType = (BlockType)Gameboard[l, c] -1;
+                        Block b = _blockFactory.Create(blockType.ToString(), new Rectangle(c * blockSize, l * blockSize, blockSize, blockSize),
                             Color.White,
-                            _tileset,
-                            new Rectangle(16, 0, 16, 16)));
-                    }
-                    if (Gameboard[l, c] == 2)
-                    {
-                        Blocks.Add(new WaterBlock(
-                            new Rectangle(c * blockSize, l * blockSize, blockSize, blockSize),
-                            Color.White,
-                            _tileset));
-                    }
-                    if (Gameboard[l, c] == 3)
-                    {
-                        Blocks.Add(new GroundBlock(
-                            new Rectangle(c * blockSize, l * blockSize, blockSize, blockSize),
-                            Color.White,
-                            _tileset,
-                            new Rectangle(16, 32, 16, 16))); ;
+                            _tileset); ;
+                        Blocks.Add(b);
                     }
                 }
             }
