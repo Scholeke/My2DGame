@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace My2DGame.Blocks
 {
-    internal class GroundBlock : CollisionBlock
+    internal class BottomGroundBlock : CollisionBlock
     {
-        public GroundBlock(Rectangle rectangle, Color color, Texture2D texture, Rectangle tile) : base(rectangle, color, texture, tile)
+        public BottomGroundBlock(Rectangle rectangle, Color color, Texture2D texture) : base(rectangle, color, texture, new Rectangle(16, 32, 16, 16))
         {
 
         }
