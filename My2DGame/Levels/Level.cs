@@ -97,7 +97,7 @@ namespace My2DGame.Levels
 
         }
 
-        public void CreateBlocks()
+        private void CreateBlocks()
         {
             for (int l = 0; l < Gameboard.GetLength(0); l++)
             {
